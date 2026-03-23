@@ -2,6 +2,8 @@ import { Box, Typography, Button, Paper, Divider, Grid } from "@mui/material";
 
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 // export default function Home() {
 //   const navigate = useNavigate();
@@ -352,16 +354,19 @@ export default function Home() {
                   color: "#334155",
                   mb: 1.2,
                   fontSize: "15px",
+                  paddingLeft:"30px",
+                  fontWeight: "bold"
                 }}
               >
-                <Box
+                {/* <Box
                   sx={{
                     width: 6,
                     height: 6,
                     borderRadius: "50%",
                     background: "#0b5299",
                   }}
-                />
+                /> */}
+                <ArrowRightAltIcon sx={{ color: "#0b5299" }} />
                 {item}
               </Typography>
             ))}
@@ -401,7 +406,7 @@ export default function Home() {
           <Box sx={{ mb: 3 }}>
             {[
               "Head of the Department(HoD)",
-              "Associate Dean (SoE, SoE-FE, SoS, SoB) / Dean (SoP)",
+              "Associate Dean (SoE, FE, SoS, SoB) / Dean (SoP)",
               "Registrar",
               "Pro Vice Chancellor (Academics, E&S, S&P)",
             ].map((item, i) => (
@@ -415,16 +420,11 @@ export default function Home() {
                   color: "#334155",
                   mb: 1.2,
                   fontSize: "15px",
+                  paddingLeft:"30px",
+                  fontWeight: "bold"
                 }}
               >
-                <Box
-                  sx={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: "50%",
-                    background: "#0b5299",
-                  }}
-                />
+                <ArrowRightAltIcon sx={{ color: "#0b5299" }} />
                 {item}
               </Typography>
             ))}
@@ -471,16 +471,11 @@ export default function Home() {
                   color: "#334155",
                   mb: 1.2,
                   fontSize: "15px",
+                  paddingLeft:"30px",
+                  fontWeight: "bold"
                 }}
               >
-                <Box
-                  sx={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: "50%",
-                    background: "#0b5299",
-                  }}
-                />
+               <ArrowRightAltIcon sx={{ color: "#0b5299" }} />
                 {item}
               </Typography>
             ))}

@@ -12,12 +12,16 @@ export default function Footer() {
     borderTop: "3px solid #be9337"
   }}
 >
-  <Typography variant="body2" sx={{color:"#032649", fontWeight: 600}}>
+  {/* <Typography variant="body2" sx={{color:"#032649", fontWeight: 600}}>
     © {new Date().getFullYear()} 360-Degree Feedback System
+  </Typography> */}
+
+  <Typography variant="body2" sx={{color:"#032649", fontWeight: 600}}>
+     360-Degree Feedback System
   </Typography>
 
   <Typography variant="caption" sx={{ color:"#64748b" }}>
-    Developed for Internal Academic Feedback
+    Developed for Internal Academic Feedback by IT Applications Team
   </Typography>
 </Box>
   );
