@@ -3,22 +3,25 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { 
-  Avatar, 
-  Menu, 
-  MenuItem, 
-  IconButton, 
-  ListItemIcon, 
+import {
+  Avatar,
+  Menu,
+  MenuItem,
+  IconButton,
+  ListItemIcon,
   Divider,
   Tooltip
 } from "@mui/material";
-import { 
-  AccountCircle, 
-  Logout as LogoutIcon, 
-  LockReset as LockResetIcon 
+import {
+  AccountCircle,
+  Logout as LogoutIcon,
+  LockReset as LockResetIcon
 } from "@mui/icons-material";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Logo360 from "./Logo360";
+
+const Logo = "/360.png";
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -97,13 +100,27 @@ export default function Header() {
           }}
         >
           <Box
-            component="img"
-            src="/bars.gif"
-            alt="Bars"
             sx={{
               height: { xs: 30, sm: 45, md: 80 },
+              width: { xs: 30, sm: 45, md: 80 },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          />
+          >
+            <Box
+              sx={{
+                transform: {
+                  xs: "scale(0.15)",
+                  sm: "scale(0.22)",
+                  md: "scale(0.4)"
+                },
+                transformOrigin: "center",
+              }}
+            >
+              <Logo360 logoUrl={Logo} />
+            </Box>
+          </Box>
 
           <Typography
             sx={{
@@ -126,7 +143,7 @@ export default function Header() {
                 <IconButton
                   onClick={handleClick}
                   size="small"
-                  sx={{ 
+                  sx={{
                     ml: 2,
                     border: "2px solid rgba(255, 255, 255, 0.2)",
                     transition: "all 0.2s",
@@ -139,9 +156,9 @@ export default function Header() {
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
                 >
-                  <Avatar 
-                    sx={{ 
-                      width: { xs: 32, sm: 40 }, 
+                  <Avatar
+                    sx={{
+                      width: { xs: 32, sm: 40 },
                       height: { xs: 32, sm: 40 },
                       bgcolor: "#be9337",
                       color: "white"
@@ -232,4 +249,4 @@ export default function Header() {
       </Toolbar>
     </AppBar>
   );
-}
+}
