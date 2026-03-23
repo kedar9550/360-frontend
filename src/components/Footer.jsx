@@ -24,5 +24,5 @@ export default function Footer() {
     Developed by the <span style={{ color: "#be9337" }}>IT Applications</span> Team for Internal Academic Feedback.
   </Typography>
 </Box>
-  );
+  )
 }
