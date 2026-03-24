@@ -478,14 +478,19 @@ export default function FeedbackPage() {
         {roles.length === 0 && (
           <Box sx={{ textAlign: "center", py: 4, mb: 2 }}>
             <CheckCircleRoundedIcon
-              sx={{ fontSize: "64px", color: "#0b5299", mb: 2 }}
+              sx={{ fontSize: "64px", color: "#10b981", mb: 2 }}
             />
             <Typography variant="h5" sx={{ fontWeight: 700, color: "#1e293b", mb: 1 }}>
               Mandatory Feedback Completed
             </Typography>
             <Typography sx={{ color: "#64748b", mb: 3 }}>
-              You have already submitted feedback for all mandatory leadership roles.
+              You have already submitted feedback for all mandatory leadership roles in this round.
             </Typography>
+            {!hasRemainingOptionals && (
+              <Typography sx={{ color: "#0b5299", fontWeight: 600 }}>
+                You have also completed all optional feedback. Thank you!
+              </Typography>
+            )}
           </Box>
         )}
 
@@ -647,8 +652,10 @@ export default function FeedbackPage() {
               },
             }}
           >
-            <Typography sx={{ color: "#475569", mb: 3, fontSize: "1.1rem" }}>
-              Would you like to provide feedback for additional roles such as Deans, Registrar, or Pro Vice-Chancellor?
+            <Typography sx={{ color: "#475569", mb: 3, fontSize: "1.1rem", fontWeight: 500 }}>
+              {roles.length === 0 
+                ? "Would you like to provide feedback for any of the optional leadership roles listed below?" 
+                : "Would you like to provide feedback for additional roles such as Deans, Registrar, or Pro Vice-Chancellor?"}
             </Typography>
 
             {userChoiceForOptional === null && (
