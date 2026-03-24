@@ -203,7 +203,7 @@ export default function Home() {
     <Box
       sx={{
         minHeight: "100vh",
-        width: "100%", 
+        width: "100%",
         background: "#f7f9fc",
         display: "flex",
         flexDirection: "column",
@@ -215,7 +215,7 @@ export default function Home() {
       {/* Glow background blob */}
       <Box
         sx={{
-          display: { xs: "none", md: "block" }, 
+          display: { xs: "none", md: "block" },
           position: "absolute",
           width: 300,
           height: 300,
@@ -230,7 +230,7 @@ export default function Home() {
       {/* Second glow blob */}
       <Box
         sx={{
-          display: { xs: "none", md: "block" }, 
+          display: { xs: "none", md: "block" },
           position: "absolute",
           width: 350,
           height: 350,
@@ -245,7 +245,7 @@ export default function Home() {
       {/* Content wrapper */}
       <Box
         sx={{
-          
+
           width: "100%",
           display: "flex",
           justifyContent: "center",
@@ -307,7 +307,8 @@ export default function Home() {
               lineHeight: 1.8,
               fontSize: "16px",
               color: "#334155",
-              textAlign: "center",
+              textAlign: "justify",
+              textJustify: "inter-word",
               maxWidth: "880px",
               margin: "0 auto 32px",
             }}
@@ -319,7 +320,7 @@ export default function Home() {
             understand ground realities and support improvemens in governance,
             transparency and academic effectiveness.
           </Typography>
-          
+
 
           <Divider sx={{ my: 4, borderColor: "#e2e8f0" }} />
 
@@ -354,7 +355,7 @@ export default function Home() {
                   color: "#334155",
                   mb: 1.2,
                   fontSize: "15px",
-                  paddingLeft:"30px",
+                  paddingLeft: "30px",
                   fontWeight: "bold"
                 }}
               >
@@ -420,7 +421,7 @@ export default function Home() {
                   color: "#334155",
                   mb: 1.2,
                   fontSize: "15px",
-                  paddingLeft:"30px",
+                  paddingLeft: "30px",
                   fontWeight: "bold"
                 }}
               >
@@ -471,11 +472,11 @@ export default function Home() {
                   color: "#334155",
                   mb: 1.2,
                   fontSize: "15px",
-                  paddingLeft:"30px",
+                  paddingLeft: "30px",
                   fontWeight: "bold"
                 }}
               >
-               <ArrowRightAltIcon sx={{ color: "#0b5299" }} />
+                <ArrowRightAltIcon sx={{ color: "#0b5299" }} />
                 {item}
               </Typography>
             ))}
