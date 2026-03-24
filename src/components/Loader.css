@@ -17,8 +17,6 @@
 .load {
     position: relative;
     animation: spin 3s linear infinite;
-    /* Adding a filter to make it look blue matching the theme #0b5299 */
-    filter: brightness(0) saturate(100%) invert(32%) sepia(85%) saturate(1480%) hue-rotate(190deg) brightness(91%) contrast(101%);
 }
 
 @keyframes spin {
@@ -44,6 +42,4 @@
 .loader-icon {
     width: 20px; /* Slightly larger for better visibility */
     height: 18px;
-    /* Filter to match #f05819 orange */
-    filter: invert(48%) sepia(85%) saturate(2222%) hue-rotate(345deg) brightness(98%) contrast(93%);
 }
