@@ -66,35 +66,12 @@ export default function Header() {
           px: { xs: 2, sm: 4 }
         }}
       >
-        {/* Left Logo Section */}
-        <Box sx={{ display: "flex", alignItems: "center", width: "33%" }}>
-          <Box
-            component="img"
-            src="/aus2.webp"
-            alt="College Logo"
-            sx={{
-              display: { xs: "none", sm: "block" },
-              height: { sm: 55, md: 70 },
-            }}
-          />
-
-          <Box
-            component="img"
-            src="/log2.png"
-            alt="College Logo"
-            sx={{
-              display: { xs: "block", sm: "none" },
-              height: 50,
-            }}
-          />
-        </Box>
-
-        {/* Center Title Section (Feedback) - Only visible when logged in */}
+        {/* Left Section - Feedback Logo (always on the left now) */}
         <Box
           sx={{
-            display: user ? "flex" : "none",
+            display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             gap: { xs: 0.5, sm: 1 },
             width: "33%"
           }}
@@ -127,12 +104,42 @@ export default function Header() {
               fontWeight: 600,
               letterSpacing: 0.5,
               color: "#ffffff",
-              fontSize: { xs: "16px", sm: "22px", md: "30px" },
-              textAlign: "center",
+              fontSize: { xs: "12px", sm: "18px", md: "24px" },
+              textAlign: "left",
             }}
           >
             Feedback
           </Typography>
+        </Box>
+
+        {/* Center Section - Aditya Logo (Only visible when logged in) */}
+        <Box
+          sx={{
+            display: user ? "flex" : "none",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "33%"
+          }}
+        >
+          <Box
+            component="img"
+            src="/aus2.webp"
+            alt="College Logo"
+            sx={{
+              display: { xs: "none", sm: "block" },
+              height: { sm: 55, md: 70 },
+            }}
+          />
+
+          <Box
+            component="img"
+            src="/log2.png"
+            alt="College Logo"
+            sx={{
+              display: { xs: "block", sm: "none" },
+              height: 50,
+            }}
+          />
         </Box>
 
         {/* Right Section - Profile Icon (logged in) OR Feedback Logo (not logged in) */}
@@ -250,49 +257,33 @@ export default function Header() {
               </Menu>
             </>
           ) : (
-            /* Show Feedback Logo on the right when NOT logged in */
+            /* Show Aditya Logo on the right when NOT logged in */
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "flex-end",
-                gap: { xs: 0.5, sm: 1 },
               }}
             >
               <Box
+                component="img"
+                src="/aus2.webp"
+                alt="College Logo"
                 sx={{
-                  height: { xs: 30, sm: 45, md: 80 },
-                  width: { xs: 30, sm: 45, md: 80 },
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  display: { xs: "none", sm: "block" },
+                  height: { sm: 55, md: 70 },
                 }}
-              >
-                <Box
-                  sx={{
-                    transform: {
-                      xs: "scale(0.15)",
-                      sm: "scale(0.22)",
-                      md: "scale(0.4)"
-                    },
-                    transformOrigin: "center",
-                  }}
-                >
-                  <Logo360 logoUrl={Logo} />
-                </Box>
-              </Box>
+              />
 
-              <Typography
+              <Box
+                component="img"
+                src="/log2.png"
+                alt="College Logo"
                 sx={{
-                  fontWeight: 600,
-                  letterSpacing: 0.5,
-                  color: "#ffffff",
-                  fontSize: { xs: "12px", sm: "18px", md: "24px" },
-                  textAlign: "right",
+                  display: { xs: "block", sm: "none" },
+                  height: 50,
                 }}
-              >
-                Feedback
-              </Typography>
+              />
             </Box>
           )}
         </Box>
