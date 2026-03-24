@@ -89,10 +89,10 @@ export default function Header() {
           />
         </Box>
 
-        {/* Center Title Section */}
+        {/* Center Title Section (Feedback) - Only visible when logged in */}
         <Box
           sx={{
-            display: "flex",
+            display: user ? "flex" : "none",
             alignItems: "center",
             justifyContent: "center",
             gap: { xs: 0.5, sm: 1 },
@@ -135,9 +135,14 @@ export default function Header() {
           </Typography>
         </Box>
 
-        {/* Right Section - Profile Icon */}
-        <Box sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center", width: "33%" }}>
-          {user && (
+        {/* Right Section - Profile Icon (logged in) OR Feedback Logo (not logged in) */}
+        <Box sx={{ 
+          display: "flex", 
+          justifyContent: "flex-end", 
+          alignItems: "center", 
+          width: "33%" 
+        }}>
+          {user ? (
             <>
               <Tooltip title="Account settings">
                 <IconButton
@@ -244,6 +249,51 @@ export default function Header() {
                 </MenuItem>
               </Menu>
             </>
+          ) : (
+            /* Show Feedback Logo on the right when NOT logged in */
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                gap: { xs: 0.5, sm: 1 },
+              }}
+            >
+              <Box
+                sx={{
+                  height: { xs: 30, sm: 45, md: 80 },
+                  width: { xs: 30, sm: 45, md: 80 },
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    transform: {
+                      xs: "scale(0.15)",
+                      sm: "scale(0.22)",
+                      md: "scale(0.4)"
+                    },
+                    transformOrigin: "center",
+                  }}
+                >
+                  <Logo360 logoUrl={Logo} />
+                </Box>
+              </Box>
+
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  letterSpacing: 0.5,
+                  color: "#ffffff",
+                  fontSize: { xs: "12px", sm: "18px", md: "24px" },
+                  textAlign: "right",
+                }}
+              >
+                Feedback
+              </Typography>
+            </Box>
           )}
         </Box>
       </Toolbar>
