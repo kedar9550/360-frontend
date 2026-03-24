@@ -648,7 +648,7 @@ export default function FeedbackPage() {
             }}
           >
             <Typography sx={{ color: "#475569", mb: 3, fontSize: "1.1rem" }}>
-              Would you like to provide feedback for any additional optional roles?
+              Would you like to provide feedback for additional roles such as Deans, Registrar, or Pro Vice-Chancellor?
             </Typography>
 
             {userChoiceForOptional === null && (
@@ -694,64 +694,64 @@ export default function FeedbackPage() {
                   mb: 3,
                 }}
               >
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "center",
-                  gap: 4,
-                }}
-              >
-                {optionalRoles
-                  .filter((r) => !selectedOptionalKeys.includes(r.key))
-                  .map((r) => (
-                    <FormControlLabel
-                      key={r.roleId}
-                      control={
-                        <Checkbox
-                          checked={tempSelectedKeys.includes(r.key)}
-                          onChange={() => {
-                            setTempSelectedKeys((prev) =>
-                              prev.includes(r.key)
-                                ? prev.filter((k) => k !== r.key)
-                                : [...prev, r.key],
-                            );
-                          }}
-                          sx={{
-                            color: "#94a3b8",
-                            "&.Mui-checked": { color: "#0b5299" },
-                          }}
-                        />
-                      }
-                      label={
-                        <Box sx={{ textAlign: "left" }}>
-                          <Typography
-                            sx={{
-                              color: "#1e293b",
-                              fontWeight: 600,
-                              fontSize: "1rem",
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: 4,
+                  }}
+                >
+                  {optionalRoles
+                    .filter((r) => !selectedOptionalKeys.includes(r.key))
+                    .map((r) => (
+                      <FormControlLabel
+                        key={r.roleId}
+                        control={
+                          <Checkbox
+                            checked={tempSelectedKeys.includes(r.key)}
+                            onChange={() => {
+                              setTempSelectedKeys((prev) =>
+                                prev.includes(r.key)
+                                  ? prev.filter((k) => k !== r.key)
+                                  : [...prev, r.key],
+                              );
                             }}
-                          >
-                            {r.assignedName || r.name}
-                          </Typography>
-                          {r.assignedName && (
+                            sx={{
+                              color: "#94a3b8",
+                              "&.Mui-checked": { color: "#0b5299" },
+                            }}
+                          />
+                        }
+                        label={
+                          <Box sx={{ textAlign: "left" }}>
                             <Typography
                               sx={{
-                                color: "#64748b",
-                                fontSize: "0.85rem",
+                                color: "#1e293b",
+                                fontWeight: 600,
+                                fontSize: "1rem",
                               }}
                             >
-                              {r.key === "hod"
-                                ? `HOD ${departmentCode}`
-                                : r.name}
+                              {r.assignedName || r.name}
                             </Typography>
-                          )}
-                        </Box>
-                      }
-                    />
-                  ))}
-              </Box>
-            </FormGroup>
+                            {r.assignedName && (
+                              <Typography
+                                sx={{
+                                  color: "#64748b",
+                                  fontSize: "0.85rem",
+                                }}
+                              >
+                                {r.key === "hod"
+                                  ? `HOD ${departmentCode}`
+                                  : r.name}
+                              </Typography>
+                            )}
+                          </Box>
+                        }
+                      />
+                    ))}
+                </Box>
+              </FormGroup>
             )}
 
             {tempSelectedKeys.length > 0 && (
@@ -787,7 +787,7 @@ export default function FeedbackPage() {
                 <Typography
                   sx={{ mt: 1, color: "#0b5299", fontSize: "0.85rem" }}
                 >
-                  Clicking this will take you to the questions for these roles.
+                  Clicking this will take you to the questions for these roles
                 </Typography>
               </Box>
             )}
