@@ -787,7 +787,7 @@ export default function FeedbackPage() {
                 <Typography
                   sx={{ mt: 1, color: "#0b5299", fontSize: "0.85rem" }}
                 >
-                  Clicking this will take you to the questions for these roles.
+                  Clicking this will take you to the questions for these roles
                 </Typography>
               </Box>
             )}
