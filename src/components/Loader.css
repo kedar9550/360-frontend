@@ -23,6 +23,7 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -40,6 +41,7 @@
 }
 
 .loader-icon {
-    width: 20px; /* Slightly larger for better visibility */
-    height: 18px;
+    width: 18px;
+    /* Slightly larger for better visibility */
+    height: 16px;
 }
