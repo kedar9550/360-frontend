@@ -52,7 +52,7 @@ export default function Header() {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: "#032649",
+        backgroundColor: "#0D233B",
         borderBottom: "4px solid #be9337",
         zIndex: 1200,
       }}
