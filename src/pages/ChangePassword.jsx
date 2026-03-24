@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { LockReset as LockResetIcon } from "@mui/icons-material";
+import { useAuth } from "../context/AuthContext"; // adjust path if needed
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -20,6 +21,7 @@ const ChangePassword = () => {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
@@ -34,11 +36,12 @@ const ChangePassword = () => {
     }
 
     try {
-      const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:7000';
+      const API_BASE_URL =
+        import.meta.env.VITE_BACKEND_URL || "http://localhost:7000";
       const response = await axios.put(
         `${API_BASE_URL}/api/auth/change-password`,
         { currentPassword, newPassword },
-        { withCredentials: true }
+        { withCredentials: true },
       );
 
       if (response.data.success) {
@@ -46,14 +49,23 @@ const ChangePassword = () => {
         setCurrentPassword("");
         setNewPassword("");
         setConfirmPassword("");
-        
+
         // redirect after success
-        setTimeout(() => {
+        setTimeout(async () => {
           setSuccess("");
-        }, 3000);
+
+          // logout
+          await logout();
+
+          //  redirect to login
+          navigate("/admin/login");
+        }, 2000);
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Failed to update password. Please try again.");
+      setError(
+        err.response?.data?.message ||
+          "Failed to update password. Please try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -68,7 +80,7 @@ const ChangePassword = () => {
         justifyContent: "center",
         background: "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)",
         py: 4,
-        minHeight: "calc(100vh - 100px)"
+        minHeight: "calc(100vh - 100px)",
       }}
     >
       <Container maxWidth="xs">
@@ -101,38 +113,38 @@ const ChangePassword = () => {
             <LockResetIcon sx={{ fontSize: 32 }} />
           </Box>
 
-          <Typography 
-            component="h1" 
-            variant="h4" 
-            sx={{ 
-              color: "#032649", 
-              mb: 0.5, 
+          <Typography
+            component="h1"
+            variant="h4"
+            sx={{
+              color: "#032649",
+              mb: 0.5,
               fontWeight: 800,
-              letterSpacing: "-0.5px"
+              letterSpacing: "-0.5px",
             }}
           >
             Change Password
           </Typography>
-          
-          <Typography 
-            variant="body1" 
-            sx={{ 
-              color: "#64748b", 
+
+          <Typography
+            variant="body1"
+            sx={{
+              color: "#64748b",
               mb: 2,
-              textAlign: "center"
+              textAlign: "center",
             }}
           >
             Update your account password securely.
           </Typography>
 
           {error && (
-            <Alert 
-              severity="error" 
-              sx={{ 
-                width: "100%", 
-                mb: 2, 
+            <Alert
+              severity="error"
+              sx={{
+                width: "100%",
+                mb: 2,
                 borderRadius: "12px",
-                border: "1px solid rgba(211, 47, 47, 0.1)"
+                border: "1px solid rgba(211, 47, 47, 0.1)",
               }}
             >
               {error}
@@ -140,20 +152,24 @@ const ChangePassword = () => {
           )}
 
           {success && (
-            <Alert 
-              severity="success" 
-              sx={{ 
-                width: "100%", 
-                mb: 2, 
+            <Alert
+              severity="success"
+              sx={{
+                width: "100%",
+                mb: 2,
                 borderRadius: "12px",
-                border: "1px solid rgba(76, 175, 80, 0.1)"
+                border: "1px solid rgba(76, 175, 80, 0.1)",
               }}
             >
               {success}
             </Alert>
           )}
 
-          <Box component="form" onSubmit={handleChangePassword} sx={{ width: "100%" }}>
+          <Box
+            component="form"
+            onSubmit={handleChangePassword}
+            sx={{ width: "100%" }}
+          >
             <TextField
               margin="dense"
               required
@@ -171,7 +187,7 @@ const ChangePassword = () => {
                   borderRadius: "12px",
                   "& fieldset": { borderColor: "#e2e8f0" },
                   "&:hover fieldset": { borderColor: "#032649" },
-                }
+                },
               }}
             />
             <TextField
@@ -191,7 +207,7 @@ const ChangePassword = () => {
                   borderRadius: "12px",
                   "& fieldset": { borderColor: "#e2e8f0" },
                   "&:hover fieldset": { borderColor: "#032649" },
-                }
+                },
               }}
             />
             <TextField
@@ -211,7 +227,7 @@ const ChangePassword = () => {
                   borderRadius: "12px",
                   "& fieldset": { borderColor: "#e2e8f0" },
                   "&:hover fieldset": { borderColor: "#032649" },
-                }
+                },
               }}
             />
             <Button
@@ -245,7 +261,7 @@ const ChangePassword = () => {
                 color: "#64748b",
                 fontWeight: 600,
                 textTransform: "none",
-                "&:hover": { backgroundColor: "transparent", color: "#032649" }
+                "&:hover": { backgroundColor: "transparent", color: "#032649" },
               }}
             >
               Cancel
