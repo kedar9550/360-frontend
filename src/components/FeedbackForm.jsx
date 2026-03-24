@@ -631,7 +631,7 @@ export default function FeedbackPage() {
         })}
 
         {/* --- OPTIONAL ROLES INTEGRATION UI --- */}
-        {((roles.length === 0) || (isLastRole && isLastSection)) && hasRemainingOptionals && (
+        {((roles.length === 0) || (isLastRole && isLastSection)) && hasRemainingOptionals && userChoiceForOptional !== "no" && (
           <Box
             sx={{
               mt: 4,
@@ -648,7 +648,7 @@ export default function FeedbackPage() {
             }}
           >
             <Typography sx={{ color: "#475569", mb: 3, fontSize: "1.1rem" }}>
-              manam optional roles ki feedback isthaara ??
+              Would you like to provide feedback for any additional optional roles?
             </Typography>
 
             {userChoiceForOptional === null && (
@@ -792,17 +792,25 @@ export default function FeedbackPage() {
               </Box>
             )}
 
-            <Typography
-              sx={{
-                mt: 3,
-                color: "#94a3b8",
-                fontSize: "0.9rem",
-                fontStyle: "italic",
-              }}
-            >
-              If not, you can click "Submit Feedback" below to finish your
-              response.
-            </Typography>
+            {userChoiceForOptional === "yes" && (
+              <Box sx={{ mt: 2 }}>
+                <Button
+                  variant="text"
+                  onClick={() => setUserChoiceForOptional("no")}
+                  sx={{
+                    color: "#64748b",
+                    textTransform: "none",
+                    fontWeight: 500,
+                    textDecoration: "underline",
+                    "&:hover": { background: "transparent", color: "#0b5299" },
+                  }}
+                >
+                  No, I'm done. Take me to submission.
+                </Button>
+              </Box>
+            )}
+
+            {/* Remove redundant instructions */}
           </Box>
         )}
 
