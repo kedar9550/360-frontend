@@ -89,6 +89,7 @@ export default function FeedbackPage() {
     severity: "warning",
   });
   const [submitError, setSubmitError] = useState("");
+  const [userChoiceForOptional, setUserChoiceForOptional] = useState(null);
 
   const role = roles[activeRole] || roles[0];
   const port = import.meta.env.VITE_BACKEND_URL;
@@ -647,61 +648,52 @@ export default function FeedbackPage() {
             }}
           >
             <Typography sx={{ color: "#475569", mb: 3, fontSize: "1.1rem" }}>
-              Would you like to provide feedback for any of these optional roles
-              as well before finishing?
+              manam optional roles ki feedback isthaara ??
             </Typography>
 
-            <FormGroup
-              sx={{
-                justifyContent: "center",
-                alignItems: "center",
-                mb: 3,
-              }}
-            >
-              {/* Select All Toggle */}
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={
-                      tempSelectedKeys.length > 0 &&
-                      tempSelectedKeys.length ===
-                      optionalRoles.filter(
-                        (r) => !selectedOptionalKeys.includes(r.key),
-                      ).length
-                    }
-                    indeterminate={
-                      tempSelectedKeys.length > 0 &&
-                      tempSelectedKeys.length <
-                      optionalRoles.filter(
-                        (r) => !selectedOptionalKeys.includes(r.key),
-                      ).length
-                    }
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        const allAvailable = optionalRoles
-                          .filter((r) => !selectedOptionalKeys.includes(r.key))
-                          .map((r) => r.key);
-                        setTempSelectedKeys(allAvailable);
-                      } else {
-                        setTempSelectedKeys([]);
-                      }
-                    }}
-                    sx={{
-                      color: "#0b5299",
-                      "&.Mui-checked": { color: "#0b5299" },
-                    }}
-                  />
-                }
-                label={
-                  <Typography
-                    sx={{ color: "#0b5299", fontWeight: 700, fontSize: "1rem" }}
-                  >
-                    Select All Optional Roles
-                  </Typography>
-                }
-                sx={{ mb: 2, borderBottom: "1px solid #e2e8f0", pb: 1 }}
-              />
+            {userChoiceForOptional === null && (
+              <Box sx={{ display: "flex", justifyContent: "center", gap: 3, mb: 2 }}>
+                <Button
+                  variant="contained"
+                  onClick={() => setUserChoiceForOptional("yes")}
+                  sx={{
+                    background: "#0b5299",
+                    color: "white",
+                    px: 4,
+                    py: 1,
+                    borderRadius: "8px",
+                    fontWeight: 600,
+                    "&:hover": { background: "#094a88" },
+                  }}
+                >
+                  Yes
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={() => setUserChoiceForOptional("no")}
+                  sx={{
+                    borderColor: "#0b5299",
+                    color: "#0b5299",
+                    px: 4,
+                    py: 1,
+                    borderRadius: "8px",
+                    fontWeight: 600,
+                    "&:hover": { background: "#f1f5f9", borderColor: "#094a88" },
+                  }}
+                >
+                  No
+                </Button>
+              </Box>
+            )}
 
+            {userChoiceForOptional === "yes" && (
+              <FormGroup
+                sx={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  mb: 3,
+                }}
+              >
               <Box
                 sx={{
                   display: "flex",
@@ -760,6 +752,7 @@ export default function FeedbackPage() {
                   ))}
               </Box>
             </FormGroup>
+            )}
 
             {tempSelectedKeys.length > 0 && (
               <Box sx={{ mt: 2 }}>
@@ -772,6 +765,7 @@ export default function FeedbackPage() {
                       ...tempSelectedKeys,
                     ]);
                     setTempSelectedKeys([]); // Reset temp keys
+                    setUserChoiceForOptional(null); // Reset choice for next time
                     setActiveRole(currentRoleCount); // Navigate to the first newly added role
                     setActiveSection(0);
                     window.scrollTo(0, 0);
@@ -848,24 +842,26 @@ export default function FeedbackPage() {
 
             {/* SUBMIT */}
             {isLastRole && isLastSection ? (
-              <Button
-                variant="contained"
-                onClick={submit}
-                sx={{
-                  textTransform: "none",
-                  borderRadius: "8px",
-                  px: 4,
-                  py: 1,
+              (!hasRemainingOptionals || userChoiceForOptional === "no") && (
+                <Button
+                  variant="contained"
+                  onClick={submit}
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "8px",
+                    px: 4,
+                    py: 1,
 
-                  background: "#0b5299",
+                    background: "#0b5299",
 
-                  "&:hover": {
-                    background: "#094a88",
-                  },
-                }}
-              >
-                Submit Feedback
-              </Button>
+                    "&:hover": {
+                      background: "#094a88",
+                    },
+                  }}
+                >
+                  Submit Feedback
+                </Button>
+              )
             ) : (
               <Button
                 variant="contained"
