@@ -78,8 +78,8 @@ export default function Header() {
         >
           <Box
             sx={{
-              height: { xs: 30, sm: 45, md: 80 },
-              width: { xs: 30, sm: 45, md: 80 },
+              height: { xs: 60, sm: 70, md: 80 },
+              width: { xs: 60, sm: 70, md: 80 },
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -88,8 +88,8 @@ export default function Header() {
             <Box
               sx={{
                 transform: {
-                  xs: "scale(0.15)",
-                  sm: "scale(0.22)",
+                  xs: "scale(0.3)",
+                  sm: "scale(0.35)",
                   md: "scale(0.4)"
                 },
                 transformOrigin: "center",
@@ -101,10 +101,11 @@ export default function Header() {
 
           <Typography
             sx={{
+              display: { xs: user ? "none" : "block", sm: "block" },
               fontWeight: 600,
               letterSpacing: 0.5,
               color: "#ffffff",
-              fontSize: { xs: "12px", sm: "18px", md: "24px" },
+              fontSize: { xs: "18px", sm: "24px", md: "30px" },
               textAlign: "left",
             }}
           >
@@ -143,11 +144,11 @@ export default function Header() {
         </Box>
 
         {/* Right Section - Profile Icon (logged in) OR Feedback Logo (not logged in) */}
-        <Box sx={{ 
-          display: "flex", 
-          justifyContent: "flex-end", 
-          alignItems: "center", 
-          width: "33%" 
+        <Box sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          width: "33%"
         }}>
           {user ? (
             <>
