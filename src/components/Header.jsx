@@ -3,6 +3,9 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import aus2 from '../assets/aus2.webp';
+import log2 from '../assets/log2.png';
+import logo from '../assets/360.png';
 import {
   Avatar,
   Menu,
@@ -21,7 +24,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Logo360 from "./Logo360";
 
-const Logo = "/360.png";
+//const Logo = "/360.png";
 
 export default function Header() {
   const { user, logout } = useAuth();
@@ -95,7 +98,7 @@ export default function Header() {
                 transformOrigin: "center",
               }}
             >
-              <Logo360 logoUrl={Logo} />
+              <Logo360 logoUrl={logo} />
             </Box>
           </Box>
 
@@ -124,7 +127,7 @@ export default function Header() {
         >
           <Box
             component="img"
-            src="/aus2.webp"
+            src={aus2}
             alt="College Logo"
             sx={{
               display: { xs: "none", sm: "block" },
@@ -134,7 +137,7 @@ export default function Header() {
 
           <Box
             component="img"
-            src="/log2.png"
+            src={log2}
             alt="College Logo"
             sx={{
               display: { xs: "block", sm: "none" },
@@ -268,7 +271,7 @@ export default function Header() {
             >
               <Box
                 component="img"
-                src="/aus2.webp"
+                src={aus2}
                 alt="College Logo"
                 sx={{
                   display: { xs: "none", sm: "block" },
@@ -278,7 +281,7 @@ export default function Header() {
 
               <Box
                 component="img"
-                src="/log2.png"
+                src={log2}
                 alt="College Logo"
                 sx={{
                   display: { xs: "block", sm: "none" },
